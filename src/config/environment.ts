@@ -22,11 +22,12 @@ const developmentConfig: EnvironmentConfig = {
 
 // Production environment (Vercel + Render)
 const productionConfig: EnvironmentConfig = {
-  API_BASE_URL: getEnvVar('VITE_API_BASE_URL', 'https://your-render-app.onrender.com/api'),
-  SOCKET_URL: getEnvVar('VITE_SOCKET_URL', 'https://your-render-app.onrender.com'),
-  FILE_BASE_URL: getEnvVar('VITE_FILE_BASE_URL', 'https://your-render-app.onrender.com'),
+  API_BASE_URL: getEnvVar('VITE_API_BASE_URL', 'https://cosmicproject-backend-1.onrender.com/api'),
+  SOCKET_URL: getEnvVar('VITE_SOCKET_URL', 'https://cosmicproject-backend-1.onrender.com'),
+  FILE_BASE_URL: getEnvVar('VITE_FILE_BASE_URL', 'https://cosmicproject-backend-1.onrender.com'),
   NODE_ENV: 'production'
 };
+
 
 // Determine current environment
 const getCurrentEnvironment = (): EnvironmentConfig => {
