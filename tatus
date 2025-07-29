@@ -1,0 +1,5 @@
+[33m9b98ae8b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Resolve merge conflicts and fix Vercel build configuration
+[33mf534f2a3[m Fix Vercel build: Remove tsc from build script and add custom build configuration
+[33m5cabeede[m Update vite.config.ts
+[33m4652e5b5[m Update vercel.json
+[33mb96f3a45[m Update package.json
