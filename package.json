@@ -4,10 +4,10 @@
   "description": "Frontend for Cosmic Solutions Site Engineer & CCTV Management System",
   "type": "module",
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx vite build",
-    "preview": "npx vite preview",
-    "lint": "npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
