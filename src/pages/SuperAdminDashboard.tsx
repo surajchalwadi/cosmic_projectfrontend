@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import { useApi } from "@/hooks/useApi";
-import React, { useState, useEffect } from "react";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
-import StatsCards from "@/components/dashboard/StatsCards";
-=======
 import React, { useState, useEffect } from "react";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import StatsCards from "@/components/dashboard/StatsCards";
 import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
->>>>>>> origin/master
 import {
   Card,
   CardContent,
@@ -61,6 +54,7 @@ import {
 import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { useSocket } from "@/contexts/SocketContext";
+import SocketTest from "@/components/ui/SocketTest";
 
 const SuperAdminDashboard = () => {
   // State for stats and projects
@@ -518,6 +512,11 @@ const SuperAdminDashboard = () => {
 
         {/* Stats Cards */}
         <StatsCards stats={statsCards} />
+
+        {/* Socket Test Component */}
+        <div className="lg:col-span-1">
+          <SocketTest />
+        </div>
 
         {/* Main Content */}
         <div className="mobile-grid-3">

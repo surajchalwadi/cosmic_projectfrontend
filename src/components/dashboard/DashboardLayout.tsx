@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-<<<<<<< HEAD
-=======
 import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
->>>>>>> origin/master
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -62,11 +59,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       const token = localStorage.getItem("token");
       const formData = new FormData();
       formData.append("profilePicture", file);
-<<<<<<< HEAD
-      const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/profile/picture", {
-=======
       const response = await fetch(`${API_BASE_URL}/profile/picture`, {
->>>>>>> origin/master
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -75,11 +68,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       });
       const data = await response.json();
       if (data.status === "success") {
-<<<<<<< HEAD
-        setProfilePicture(`https://cosmicproject-backend-1.onrender.com/${data.data.profilePicture}`);
-=======
         setProfilePicture(`${FILE_BASE_URL}/${data.data.profilePicture}`);
->>>>>>> origin/master
       } else {
         throw new Error(data.message || "Failed to upload profile picture");
       }

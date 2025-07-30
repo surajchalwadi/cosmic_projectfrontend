@@ -37,11 +37,7 @@ const isProductionEnv = (): boolean => {
 
 // Production environment (Vercel + Render)
 const productionConfig: EnvironmentConfig = {
-<<<<<<< HEAD
   API_BASE_URL: 'https://cosmicproject-backend-1.onrender.com/api',
-=======
-  API_BASE_URL: '/api/proxy',
->>>>>>> origin/master
   SOCKET_URL: 'https://cosmicproject-backend-1.onrender.com',
   FILE_BASE_URL: 'https://cosmicproject-backend-1.onrender.com',
   NODE_ENV: 'production'
@@ -49,15 +45,9 @@ const productionConfig: EnvironmentConfig = {
 
 // Development environment (localhost)
 const developmentConfig: EnvironmentConfig = {
-<<<<<<< HEAD
-  API_BASE_URL: 'https://cosmicproject-backend-1.onrender.com/api',
-  SOCKET_URL: 'https://cosmicproject-backend-1.onrender.com',
-  FILE_BASE_URL: 'https://cosmicproject-backend-1.onrender.com',
-=======
   API_BASE_URL: 'http://localhost:5000/api',
   SOCKET_URL: 'http://localhost:5000',
   FILE_BASE_URL: 'http://localhost:5000',
->>>>>>> origin/master
   NODE_ENV: 'development'
 };
 
@@ -88,11 +78,6 @@ const getCurrentEnvironment = (): EnvironmentConfig => {
   
   // Otherwise use environment detection
   return isProductionEnv() ? productionConfig : developmentConfig;
-=======
-  // For now, always use production config since backend is deployed on Render
-  // This ensures the frontend connects to the deployed backend even when running locally
-  return productionConfig;
->>>>>>> origin/master
 };
 
 // Export current environment config
@@ -118,11 +103,6 @@ console.log('🌍 Environment Configuration:', {
   VITE_API_BASE_URL: import.meta.env?.VITE_API_BASE_URL,
 <<<<<<< HEAD
   hostname: typeof window !== 'undefined' ? window.location.hostname : 'server'
-=======
-  hostname: typeof window !== 'undefined' ? window.location.hostname : 'server',
-  isProduction: isProductionEnv(),
-  isDevelopment: !isProductionEnv()
->>>>>>> origin/master
 });
 
 export default env;
