@@ -80,7 +80,7 @@ const MyProjectsPage = () => {
     };
 
     // Fetch manager's assigned projects (correct port)
-    fetch("http://localhost:5000/api/manager/projects", { headers })
+    fetch("https://cosmicproject-backend-1.onrender.com/api/manager/projects", { headers })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -90,7 +90,7 @@ const MyProjectsPage = () => {
       .catch(console.error);
 
     // Fetch reports
-    fetch("http://localhost:5000/api/reports/overview", { headers })
+    fetch("https://cosmicproject-backend-1.onrender.com/api/reports/overview", { headers })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {

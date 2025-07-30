@@ -72,7 +72,7 @@ const ManagerTechniciansPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
-    fetch("http://localhost:5000/api/manager/technicians", {
+    fetch("https://cosmicproject-backend-1.onrender.com/api/manager/technicians", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

@@ -100,9 +100,26 @@ export const authAPI = {
   },
 
   getProfile: async () => {
-    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+    const response = await fetch(`${API_BASE_URL}/profile`, {
       method: "GET",
       headers: createHeaders(),
+    });
+
+    return handleResponse(response);
+  },
+
+  // Upload profile picture
+  uploadProfilePicture: async (file: File) => {
+    const token = getAuthToken();
+    const formData = new FormData();
+    formData.append("profilePicture", file);
+    
+    const response = await fetch(`${API_BASE_URL}/profile/picture`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
     });
 
     return handleResponse(response);
@@ -243,6 +260,42 @@ export const superAdminAPI = {
   getManagers: () => apiRequest('/superadmin/managers'),
   
   getTechnicians: () => apiRequest('/superadmin/technicians'),
+};
+
+// Manager API functions
+export const managerAPI = {
+  getStats: () => apiRequest('/manager/stats'),
+  
+  getProjects: () => apiRequest('/manager/projects'),
+  
+  getTechnicians: () => apiRequest('/manager/technicians'),
+  
+  getTasks: () => apiRequest('/manager/tasks'),
+  
+  createTask: (taskData: any) =>
+    apiRequest('/manager/tasks', {
+      method: 'POST',
+      body: JSON.stringify(taskData),
+    }),
+  
+  updateTask: (id: string, data: any) =>
+    apiRequest(`/manager/tasks/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+};
+
+// Technician API functions
+export const technicianAPI = {
+  getTasks: () => apiRequest('/technician/tasks'),
+  
+  updateTaskStatus: (id: string, data: any) =>
+    apiRequest(`/technician/tasks/${id}/status`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+  
+  getReports: () => apiRequest('/technician/reports'),
 };
 
 // Projects API functions
@@ -402,6 +455,8 @@ export default {
   auth: authAPI,
   user: userAPI,
   superAdmin: superAdminAPI,
+  manager: managerAPI,
+  technician: technicianAPI,
   projects: projectsAPI,
   reports: reportsAPI,
   notifications: notificationAPI,

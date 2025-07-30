@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, ReactNode } from "react";
+import { authAPI } from "@/utils/api";
 
 export interface User {
   id: string;
@@ -64,16 +65,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
 
         // Verify token with backend
-        const response = await fetch(`http://localhost:5000/api/auth/me`, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
+        try {
+          const data = await authAPI.getCurrentUser();
           
           if (data.status === "success" && data.data?.user) {
             setUser(data.data.user);
@@ -82,19 +75,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           } else {
             throw new Error("Invalid response format");
           }
-        } else {
+        } catch (error) {
           // Token might be expired or invalid
-          console.warn(`Auth verification failed: ${response.status}`);
+          console.warn(`Auth verification failed:`, error);
           
-          if (response.status === 401) {
-            // Token expired/invalid, clear auth and try session fallback
-            apiUtils.clearAuth();
-            const sessionUser = apiUtils.getCurrentUserFromSession();
-            if (sessionUser) {
-              setUser(sessionUser);
-            }
-          } else {
-            throw new Error(`HTTP ${response.status}`);
+          // Clear auth and try session fallback
+          apiUtils.clearAuth();
+          const sessionUser = apiUtils.getCurrentUserFromSession();
+          if (sessionUser) {
+            setUser(sessionUser);
           }
         }
       } catch (error) {
@@ -125,21 +114,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       setIsLoading(true);
       
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 
-          email: email.trim().toLowerCase(), 
-          password, 
-          role 
-        }),
-      });
+      const data = await authAPI.login(email.trim().toLowerCase(), password, role);
 
-      const data = await response.json();
-
-      if (response.ok && data.status === "success") {
+      if (data.status === "success") {
         if (data.data?.token && data.data?.user) {
           localStorage.setItem("token", data.data.token);
           setUser(data.data.user);
@@ -166,13 +143,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const token = localStorage.getItem("token");
       if (token) {
         // Try to logout on backend, but don't fail if it doesn't work
-        await fetch("http://localhost:5000/api/auth/logout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }).catch(error => {
+        await authAPI.logout().catch(error => {
           console.warn("Backend logout failed:", error);
         });
       }

@@ -45,9 +45,9 @@ const productionConfig: EnvironmentConfig = {
 
 // Development environment (localhost)
 const developmentConfig: EnvironmentConfig = {
-  API_BASE_URL: 'http://localhost:5000/api',
-  SOCKET_URL: 'http://localhost:5000',
-  FILE_BASE_URL: 'http://localhost:5000',
+  API_BASE_URL: 'https://cosmicproject-backend-1.onrender.com/api',
+  SOCKET_URL: 'https://cosmicproject-backend-1.onrender.com',
+  FILE_BASE_URL: 'https://cosmicproject-backend-1.onrender.com',
   NODE_ENV: 'development'
 };
 
@@ -65,6 +65,14 @@ const getCurrentEnvironment = (): EnvironmentConfig => {
       FILE_BASE_URL: viteFileUrl,
       NODE_ENV: 'production'
     };
+  }
+  
+  // Check if we're on Vercel (production deployment)
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname.includes('vercel.app') || hostname.includes('cosmic-projectfrontend')) {
+      return productionConfig;
+    }
   }
   
   // Otherwise use environment detection

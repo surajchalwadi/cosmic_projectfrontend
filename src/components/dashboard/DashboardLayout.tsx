@@ -58,7 +58,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       const token = localStorage.getItem("token");
       const formData = new FormData();
       formData.append("profilePicture", file);
-      const response = await fetch("http://localhost:5000/api/profile/picture", {
+      const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/profile/picture", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       });
       const data = await response.json();
       if (data.status === "success") {
-        setProfilePicture(`http://localhost:5000/${data.data.profilePicture}`);
+        setProfilePicture(`https://cosmicproject-backend-1.onrender.com/${data.data.profilePicture}`);
       } else {
         throw new Error(data.message || "Failed to upload profile picture");
       }

@@ -105,7 +105,7 @@ const TechnicianDashboard = () => {
   const fetchUserProfile = async () => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
-    const res = await fetch("http://localhost:5000/api/profile", { headers });
+    const res = await fetch("https://cosmicproject-backend-1.onrender.com/api/profile", { headers });
     const data = await res.json();
     if (data.status === "success") {
       setUserProfile(data.data);
@@ -116,7 +116,7 @@ const TechnicianDashboard = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("profilePicture", file);
-    await fetch("http://localhost:5000/api/profile/picture", {
+    await fetch("https://cosmicproject-backend-1.onrender.com/api/profile/picture", {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -134,7 +134,7 @@ const TechnicianDashboard = () => {
     };
 
     // Fetch technician's assigned tasks
-    fetch("http://localhost:5000/api/technician/tasks", { headers })
+    fetch("https://cosmicproject-backend-1.onrender.com/api/technician/tasks", { headers })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -286,7 +286,7 @@ const TechnicianDashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/technician/tasks/${selectedTask.id}/status`,
+        `https://cosmicproject-backend-1.onrender.com/api/technician/tasks/${selectedTask.id}/status`,
         {
           method: "PUT",
           headers: {
@@ -307,7 +307,7 @@ const TechnicianDashboard = () => {
       if (data.status === "success") {
         // Refresh the tasks list
         const tasksResponse = await fetch(
-          "http://localhost:5000/api/technician/tasks",
+          "https://cosmicproject-backend-1.onrender.com/api/technician/tasks",
           {
             headers: {
               "Content-Type": "application/json",
@@ -352,7 +352,7 @@ const TechnicianDashboard = () => {
       userRole="technician"
       userName={userProfile?.name || "Technician"}
       userEmail={userProfile?.email || "technician@cosmicsolutions.com"}
-      userProfilePicture={userProfile?.profilePicture ? `http://localhost:5000/${userProfile.profilePicture}` : undefined}
+      userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
       onProfilePictureUpload={handleProfilePictureUpload}
     >
       <div className="mobile-container mobile-space-y max-w-7xl mx-auto">
@@ -630,7 +630,7 @@ const TechnicianDashboard = () => {
                                   </div>
                                 </div>
                                 <a
-                                  href={file.url || `http://localhost:5000/${file.path}`}
+                                  href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-sm text-blue-600 hover:text-blue-800 underline font-medium"
@@ -664,7 +664,7 @@ const TechnicianDashboard = () => {
                                   </div>
                                 </div>
                                 <a
-                                  href={file.url || `http://localhost:5000/${file.path}`}
+                                  href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-sm text-blue-600 hover:text-blue-800 underline font-medium"

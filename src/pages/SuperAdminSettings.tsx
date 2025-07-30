@@ -65,7 +65,7 @@ const SuperAdminSettings = () => {
     setLoading(true);
     try {
       // Fetch managers
-      const managersRes = await fetch("http://localhost:5000/api/superadmin/managers", {
+      const managersRes = await fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/managers", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (managersRes.ok) {
@@ -79,7 +79,7 @@ const SuperAdminSettings = () => {
         setManagers([]);
       }
       // Fetch technicians
-      const techsRes = await fetch("http://localhost:5000/api/superadmin/technicians", {
+      const techsRes = await fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/technicians", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (techsRes.ok) {
@@ -109,7 +109,7 @@ const SuperAdminSettings = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/users", {
+      const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/users", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const SuperAdminSettings = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const response = await fetch(`https://cosmicproject-backend-1.onrender.com/api/users/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
