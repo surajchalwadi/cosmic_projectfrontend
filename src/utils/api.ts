@@ -100,7 +100,11 @@ export const authAPI = {
   },
 
   getProfile: async () => {
+<<<<<<< HEAD
     const response = await fetch(`${API_BASE_URL}/profile`, {
+=======
+    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+>>>>>>> origin/master
       method: "GET",
       headers: createHeaders(),
     });
@@ -108,6 +112,7 @@ export const authAPI = {
     return handleResponse(response);
   },
 
+<<<<<<< HEAD
   // Upload profile picture
   uploadProfilePicture: async (file: File) => {
     const token = getAuthToken();
@@ -125,6 +130,8 @@ export const authAPI = {
     return handleResponse(response);
   },
 
+=======
+>>>>>>> origin/master
   // Change password
   changePassword: async (currentPassword: string, newPassword: string) => {
     const response = await fetch(`${API_BASE_URL}/auth/change-password`, {
@@ -262,6 +269,7 @@ export const superAdminAPI = {
   getTechnicians: () => apiRequest('/superadmin/technicians'),
 };
 
+<<<<<<< HEAD
 // Manager API functions
 export const managerAPI = {
   getStats: () => apiRequest('/manager/stats'),
@@ -298,6 +306,8 @@ export const technicianAPI = {
   getReports: () => apiRequest('/technician/reports'),
 };
 
+=======
+>>>>>>> origin/master
 // Projects API functions
 export const projectsAPI = {
   getProjects: (params?: any) => {
@@ -455,8 +465,11 @@ export default {
   auth: authAPI,
   user: userAPI,
   superAdmin: superAdminAPI,
+<<<<<<< HEAD
   manager: managerAPI,
   technician: technicianAPI,
+=======
+>>>>>>> origin/master
   projects: projectsAPI,
   reports: reportsAPI,
   notifications: notificationAPI,

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { useApi } from "@/hooks/useApi";
 import React, { useState, useEffect } from "react";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import StatsCards from "@/components/dashboard/StatsCards";
+=======
+import React, { useState, useEffect } from "react";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import StatsCards from "@/components/dashboard/StatsCards";
+import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 import {
   Card,
   CardContent,
@@ -105,7 +112,11 @@ const SuperAdminDashboard = () => {
   const fetchUserProfile = async () => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
+<<<<<<< HEAD
     const res = await fetch("https://cosmicproject-backend-1.onrender.com/api/profile", { headers });
+=======
+    const res = await fetch(`${API_BASE_URL}/profile`, { headers });
+>>>>>>> origin/master
     const data = await res.json();
     if (data.status === "success") {
       setUserProfile(data.data);
@@ -116,7 +127,11 @@ const SuperAdminDashboard = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("profilePicture", file);
+<<<<<<< HEAD
     await fetch("https://cosmicproject-backend-1.onrender.com/api/profile/picture", {
+=======
+          await fetch(`${API_BASE_URL}/profile/picture`, {
+>>>>>>> origin/master
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -134,7 +149,11 @@ const SuperAdminDashboard = () => {
     };
 
     // Fetch user profile
+<<<<<<< HEAD
     // fetch("https://cosmicproject-backend-1.onrender.com/api/profile", { headers })
+=======
+    // fetch("http://localhost:5000/api/profile", { headers })
+>>>>>>> origin/master
     //   .then((res) => res.json())
     //   .then((data) => {
     //     if (data.status === "success") {
@@ -143,7 +162,11 @@ const SuperAdminDashboard = () => {
     //   })
     //   .catch(console.error);
 
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/stats", { headers })
+=======
+          fetch(`${API_BASE_URL}/superadmin/stats`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -152,7 +175,11 @@ const SuperAdminDashboard = () => {
       })
       .catch(console.error);
 
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", { headers })
+=======
+          fetch(`${API_BASE_URL}/superadmin/projects`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -161,7 +188,11 @@ const SuperAdminDashboard = () => {
       })
       .catch(console.error);
 
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/managers", { headers })
+=======
+          fetch(`${API_BASE_URL}/superadmin/managers`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -170,7 +201,11 @@ const SuperAdminDashboard = () => {
       })
       .catch(console.error);
 
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/reports/overview", { headers })
+=======
+          fetch(`${API_BASE_URL}/reports/overview`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -208,7 +243,11 @@ const SuperAdminDashboard = () => {
       }
       // Re-fetch projects from backend
       const token = localStorage.getItem("token");
+<<<<<<< HEAD
       fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", {
+=======
+      fetch(`${API_BASE_URL}/superadmin/projects`, {
+>>>>>>> origin/master
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -221,7 +260,11 @@ const SuperAdminDashboard = () => {
         })
         .catch(console.error);
       // Re-fetch stats from backend
+<<<<<<< HEAD
       fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/stats", {
+=======
+      fetch(`${API_BASE_URL}/superadmin/stats`, {
+>>>>>>> origin/master
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
@@ -278,7 +321,11 @@ const SuperAdminDashboard = () => {
           formData.append(key, value as string);
         }
       });
+<<<<<<< HEAD
       res = await fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", {
+=======
+      res = await fetch(`${API_BASE_URL}/superadmin/projects`, {
+>>>>>>> origin/master
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -287,7 +334,11 @@ const SuperAdminDashboard = () => {
       });
     } else {
       // No files, send JSON
+<<<<<<< HEAD
       res = await fetch("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", {
+=======
+      res = await fetch(`${API_BASE_URL}/superadmin/projects`, {
+>>>>>>> origin/master
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -373,7 +424,11 @@ const SuperAdminDashboard = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/users", {
+=======
+          fetch(`${API_BASE_URL}/users`, {
+>>>>>>> origin/master
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -395,7 +450,11 @@ const SuperAdminDashboard = () => {
     const selectedTask = projects.flatMap((project) => project.tasks || []).find((t) => (t._id || t.id) === selectedReportTaskId);
     if (!selectedTask) return;
     try {
+<<<<<<< HEAD
       const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/reports/task-pdf", {
+=======
+      const response = await fetch(`${API_BASE_URL}/reports/task-pdf`, {
+>>>>>>> origin/master
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -423,7 +482,11 @@ const SuperAdminDashboard = () => {
       userRole="superadmin"
       userName={userProfile?.name || "System Administrator"}
       userEmail={userProfile?.email || "admin@cosmicsolutions.com"}
+<<<<<<< HEAD
       userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
+=======
+              userProfilePicture={userProfile?.profilePicture ? `${FILE_BASE_URL}/${userProfile.profilePicture}` : undefined}
+>>>>>>> origin/master
       onProfilePictureUpload={handleProfilePictureUpload}
     >
       <div className="mobile-container mobile-space-y max-w-7xl mx-auto">
@@ -1035,7 +1098,11 @@ const SuperAdminDashboard = () => {
                                       {task.files.map((file, idx) => (
                                         <li key={idx}>
                                           <a 
+<<<<<<< HEAD
                                             href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`} 
+=======
+                                            href={file.url || `${FILE_BASE_URL}/${file.path}`} 
+>>>>>>> origin/master
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-blue-600 hover:text-blue-800 underline text-xs"
@@ -1106,7 +1173,11 @@ const SuperAdminDashboard = () => {
                                       {task.files.map((file, idx) => (
                                         <div key={idx}>
                                           <a 
+<<<<<<< HEAD
                                             href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`} 
+=======
+                                            href={file.url || `${FILE_BASE_URL}/${file.path}`} 
+>>>>>>> origin/master
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="mobile-text-xs text-blue-600 hover:text-blue-800 underline break-all"

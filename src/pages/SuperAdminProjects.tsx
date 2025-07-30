@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
+<<<<<<< HEAD
+=======
+import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -43,13 +47,21 @@ const SuperAdminProjects = () => {
       const headers = { Authorization: `Bearer ${token}` };
       try {
         // Fetch user profile
+<<<<<<< HEAD
         const profileResponse = await axios.get("https://cosmicproject-backend-1.onrender.com/api/profile", { headers });
+=======
+        const profileResponse = await axios.get(`${API_BASE_URL}/profile`, { headers });
+>>>>>>> origin/master
         if (profileResponse.data.status === "success") {
           setUserProfile(profileResponse.data.data);
         }
 
         // Fetch projects
+<<<<<<< HEAD
         const projectsResponse = await axios.get("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", { headers });
+=======
+        const projectsResponse = await axios.get(`${API_BASE_URL}/superadmin/projects`, { headers });
+>>>>>>> origin/master
         if (projectsResponse.data.status === "success") {
           const data = projectsResponse.data.data;
           setProjects(Array.isArray(data.projects) ? data.projects : []);
@@ -57,7 +69,11 @@ const SuperAdminProjects = () => {
           setProjects([]);
         }
         // Fetch managers
+<<<<<<< HEAD
         const managersResponse = await axios.get("https://cosmicproject-backend-1.onrender.com/api/superadmin/managers", { headers });
+=======
+        const managersResponse = await axios.get(`${API_BASE_URL}/superadmin/managers`, { headers });
+>>>>>>> origin/master
         if (managersResponse.data.status === "success") {
           const managersData = managersResponse.data.data.map((manager: any) => ({
             id: manager._id,
@@ -98,7 +114,11 @@ const SuperAdminProjects = () => {
     });
     const token = localStorage.getItem("token");
     try {
+<<<<<<< HEAD
       const res = await axios.post("https://cosmicproject-backend-1.onrender.com/api/superadmin/projects", formData, {
+=======
+      const res = await axios.post(`${API_BASE_URL}/superadmin/projects`, formData, {
+>>>>>>> origin/master
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.data.status === "success") {
@@ -175,7 +195,11 @@ const SuperAdminProjects = () => {
         userRole="super-admin" 
         userName={userProfile?.name || "System Administrator"} 
         userEmail={userProfile?.email || "admin@cosmicsolutions.com"}
+<<<<<<< HEAD
         userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
+=======
+        userProfilePicture={userProfile?.profilePicture ? `${FILE_BASE_URL}/${userProfile.profilePicture}` : undefined}
+>>>>>>> origin/master
       >
         <div className="p-4 lg:p-6 space-y-6 max-w-7xl mx-auto">
           <div className="text-center py-12">
@@ -192,7 +216,11 @@ const SuperAdminProjects = () => {
       userRole="super-admin" 
       userName={userProfile?.name || "System Administrator"} 
       userEmail={userProfile?.email || "admin@cosmicsolutions.com"}
+<<<<<<< HEAD
       userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
+=======
+              userProfilePicture={userProfile?.profilePicture ? `${FILE_BASE_URL}/${userProfile.profilePicture}` : undefined}
+>>>>>>> origin/master
     >
       <div className="p-4 lg:p-6 space-y-6 max-w-7xl mx-auto">
         <div className="flex justify-between items-center">

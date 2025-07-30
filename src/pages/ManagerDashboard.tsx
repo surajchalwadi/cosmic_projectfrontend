@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import StatsCards from "@/components/dashboard/StatsCards";
+<<<<<<< HEAD
+=======
+import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 
 import {
   Card,
@@ -118,7 +122,11 @@ const ManagerDashboard = () => {
   const fetchUserProfile = async () => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
+<<<<<<< HEAD
     const res = await fetch("https://cosmicproject-backend-1.onrender.com/api/profile", { headers });
+=======
+    const res = await fetch(`${API_BASE_URL}/profile`, { headers });
+>>>>>>> origin/master
     const data = await res.json();
     if (data.status === "success") {
       setUserProfile(data.data);
@@ -129,7 +137,11 @@ const ManagerDashboard = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("profilePicture", file);
+<<<<<<< HEAD
     await fetch("https://cosmicproject-backend-1.onrender.com/api/profile/picture", {
+=======
+          await fetch(`${API_BASE_URL}/profile/picture`, {
+>>>>>>> origin/master
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -149,7 +161,11 @@ const ManagerDashboard = () => {
     fetchUserProfile();
 
     // Fetch manager's assigned projects
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/manager/projects", { headers })
+=======
+            fetch(`${API_BASE_URL}/manager/projects`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -159,7 +175,11 @@ const ManagerDashboard = () => {
       .catch(console.error);
 
     // Fetch technicians
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/manager/technicians", { headers })
+=======
+            fetch(`${API_BASE_URL}/manager/technicians`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -169,7 +189,11 @@ const ManagerDashboard = () => {
       .catch(console.error);
 
     // Fetch manager stats
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/manager/stats", { headers })
+=======
+            fetch(`${API_BASE_URL}/manager/stats`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -217,7 +241,11 @@ const ManagerDashboard = () => {
       }
       // Re-fetch tasks from backend and update state
       const token = localStorage.getItem("token");
+<<<<<<< HEAD
       fetch("https://cosmicproject-backend-1.onrender.com/api/manager/tasks", {
+=======
+      fetch(`${API_BASE_URL}/manager/tasks`, {
+>>>>>>> origin/master
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -232,7 +260,11 @@ const ManagerDashboard = () => {
         })
         .catch(console.error);
       // Re-fetch manager stats from backend
+<<<<<<< HEAD
       fetch("https://cosmicproject-backend-1.onrender.com/api/manager/stats", {
+=======
+      fetch(`${API_BASE_URL}/manager/stats`, {
+>>>>>>> origin/master
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
@@ -261,7 +293,11 @@ const ManagerDashboard = () => {
       console.error("[FRONTEND DEBUG] No token found");
       return;
     }
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/manager/tasks", {
+=======
+    fetch(`${API_BASE_URL}/manager/tasks`, {
+>>>>>>> origin/master
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -331,7 +367,11 @@ const ManagerDashboard = () => {
         formData.append("projectFiles", filePath);
       });
 
+<<<<<<< HEAD
       const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/manager/tasks", {
+=======
+      const response = await fetch(`${API_BASE_URL}/manager/tasks`, {
+>>>>>>> origin/master
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -344,7 +384,11 @@ const ManagerDashboard = () => {
       if (data.status === "success") {
         // Refresh the tasks list
         const tasksResponse = await fetch(
+<<<<<<< HEAD
           "https://cosmicproject-backend-1.onrender.com/api/manager/tasks",
+=======
+          `${API_BASE_URL}/manager/tasks`,
+>>>>>>> origin/master
           {
             headers: {
               "Content-Type": "application/json",
@@ -466,7 +510,11 @@ const ManagerDashboard = () => {
       return;
     }
     try {
+<<<<<<< HEAD
       const response = await fetch("https://cosmicproject-backend-1.onrender.com/api/reports/task-pdf", {
+=======
+      const response = await fetch(`${API_BASE_URL}/reports/task-pdf`, {
+>>>>>>> origin/master
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -496,7 +544,11 @@ const ManagerDashboard = () => {
       userRole="manager"
       userName={userProfile?.name || "Project Manager"}
       userEmail={userProfile?.email || "manager@cosmicsolutions.com"}
+<<<<<<< HEAD
       userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
+=======
+              userProfilePicture={userProfile?.profilePicture ? `${FILE_BASE_URL}/${userProfile.profilePicture}` : undefined}
+>>>>>>> origin/master
       onProfilePictureUpload={handleProfilePictureUpload}
     >
       <div className="mobile-container mobile-space-y max-w-7xl mx-auto">
@@ -630,7 +682,11 @@ const ManagerDashboard = () => {
                                 const newStatus = e.target.value;
                                 try {
                                   const token = localStorage.getItem("token");
+<<<<<<< HEAD
                                   const response = await fetch(`https://cosmicproject-backend-1.onrender.com/api/projects/${project._id}/status`, {
+=======
+                                  const response = await fetch(`${API_BASE_URL}/projects/${project._id}/status`, {
+>>>>>>> origin/master
                                     method: "PATCH",
                                     headers: {
                                       "Content-Type": "application/json",
@@ -668,7 +724,11 @@ const ManagerDashboard = () => {
                               {project.files.map((file, idx) => (
                                 <li key={idx}>
                                   <a
+<<<<<<< HEAD
                                     href={`https://cosmicproject-backend-1.onrender.com/${file.path.replace(/\\/g, '/')}`}
+=======
+                                    href={`${FILE_BASE_URL}/${file.path.replace(/\\/g, '/')}`}
+>>>>>>> origin/master
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-600 underline hover:text-blue-800"
@@ -762,7 +822,11 @@ const ManagerDashboard = () => {
                                     {task.project.files.map((file, idx) => (
                                       <li key={idx}>
                                         <a
+<<<<<<< HEAD
                                           href={`https://cosmicproject-backend-1.onrender.com/${file.path}`}
+=======
+                                          href={`${FILE_BASE_URL}/${file.path}`}
+>>>>>>> origin/master
                                           target="_blank"
                                           rel="noopener noreferrer"
                                           className="text-xs text-blue-600 hover:text-blue-800 underline font-medium"
@@ -1171,7 +1235,11 @@ const ManagerDashboard = () => {
                                     {task.files.map((file, idx) => (
                                       <li key={idx}>
                                         <a 
+<<<<<<< HEAD
                                           href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`} 
+=======
+                                          href={file.url || `${FILE_BASE_URL}/${file.path}`} 
+>>>>>>> origin/master
                                           target="_blank" 
                                           rel="noopener noreferrer"
                                           className="text-blue-600 hover:text-blue-800 underline text-xs"
@@ -1240,7 +1308,11 @@ const ManagerDashboard = () => {
                                     {task.files.map((file, idx) => (
                                       <div key={idx}>
                                         <a 
+<<<<<<< HEAD
                                           href={file.url || `https://cosmicproject-backend-1.onrender.com/${file.path}`} 
+=======
+                                          href={file.url || `${FILE_BASE_URL}/${file.path}`} 
+>>>>>>> origin/master
                                           target="_blank" 
                                           rel="noopener noreferrer"
                                           className="mobile-text-xs text-blue-600 hover:text-blue-800 underline break-all"

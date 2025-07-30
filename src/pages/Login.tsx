@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+<<<<<<< HEAD
 import { authAPI } from "@/utils/api";
+=======
+import { API_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -50,8 +54,35 @@ const Login = () => {
     }
 
     try {
+<<<<<<< HEAD
       // Use the authAPI utility for login
       const data = await authAPI.login(email, password, role);
+=======
+      // Make direct API call first to get user data
+      const response = await fetch(`${API_BASE_URL}/auth/login`,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, role }),
+      });
+
+      // Check if response is ok before trying to read JSON
+      if (!response.ok) {
+        // Try to read error message from response if possible
+        let errorMessage = "Login failed";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || "Invalid credentials";
+        } catch {
+          errorMessage = `Server error: ${response.status} ${response.statusText}`;
+        }
+        alert(`❌ Login failed!\n\n${errorMessage}`);
+        return;
+      }
+
+      const data = await response.json();
+>>>>>>> origin/master
 
       if (data.status === "success") {
         // Store token and user info

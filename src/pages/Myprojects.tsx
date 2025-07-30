@@ -1,5 +1,9 @@
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
+=======
+import { API_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 import {
   Card,
   CardHeader,
@@ -80,7 +84,11 @@ const MyProjectsPage = () => {
     };
 
     // Fetch manager's assigned projects (correct port)
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/manager/projects", { headers })
+=======
+    fetch(`${API_BASE_URL}/manager/projects`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -90,7 +98,11 @@ const MyProjectsPage = () => {
       .catch(console.error);
 
     // Fetch reports
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/reports/overview", { headers })
+=======
+    fetch(`${API_BASE_URL}/reports/overview`, { headers })
+>>>>>>> origin/master
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {

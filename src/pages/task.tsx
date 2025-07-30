@@ -1,6 +1,10 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
+<<<<<<< HEAD
+=======
+import { API_BASE_URL, FILE_BASE_URL } from "@/config/environment";
+>>>>>>> origin/master
 import { Search, Plus, Eye, Calendar, AlertCircle, Clock, Building, User, X } from 'lucide-react';
 import { useSocket } from '@/contexts/SocketContext';
 
@@ -40,7 +44,11 @@ const TasksPage = () => {
   const fetchTasks = async () => {
     const token = localStorage.getItem('token');
     if (!token) return;
+<<<<<<< HEAD
     const res = await fetch('https://cosmicproject-backend-1.onrender.com/api/manager/tasks', {
+=======
+    const res = await fetch(`${API_BASE_URL}/manager/tasks`, {
+>>>>>>> origin/master
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -64,7 +72,11 @@ const TasksPage = () => {
     const token = localStorage.getItem('token');
     
     // Fetch user profile
+<<<<<<< HEAD
     fetch("https://cosmicproject-backend-1.onrender.com/api/profile", {
+=======
+          fetch(`${API_BASE_URL}/profile`, {
+>>>>>>> origin/master
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -162,7 +174,11 @@ const TasksPage = () => {
       userRole="manager"
       userName={userProfile?.name || "Project Manager"}
       userEmail={userProfile?.email || "manager@cosmicsolutions.com"}
+<<<<<<< HEAD
       userProfilePicture={userProfile?.profilePicture ? `https://cosmicproject-backend-1.onrender.com/${userProfile.profilePicture}` : undefined}
+=======
+              userProfilePicture={userProfile?.profilePicture ? `${FILE_BASE_URL}/${userProfile.profilePicture}` : undefined}
+>>>>>>> origin/master
     >
       <div className="p-4 lg:p-6 max-w-7xl mx-auto">
         {/* Page Description */}
